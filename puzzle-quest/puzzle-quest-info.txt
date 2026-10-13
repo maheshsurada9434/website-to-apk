@@ -1,0 +1,7 @@
+app: Puzzle Quest (com.maheshsurada.puzzlequest)
+site: https://navajowhite-heron-188716.hostingersite.com
+mode: offline
+version: 1.0.0 (2)
+signed: no
+    minSdkVersion = 24
+    targetSdkVersion = 36
