@@ -1,0 +1,15 @@
+{
+  "name": "website-to-apk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turn any website into an Android app (APK) on GitHub Actions.",
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/core": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^8.0.0"
+  }
+}

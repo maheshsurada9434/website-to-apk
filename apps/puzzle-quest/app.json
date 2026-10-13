@@ -1,0 +1,11 @@
+{
+  "name": "Puzzle Quest",
+  "id": "com.maheshsurada.puzzlequest",
+  "url": "https://navajowhite-heron-188716.hostingersite.com",
+  "version": "1.0.0",
+  "mode": "auto",
+  "pullToRefresh": false,
+  "orientation": "portrait",
+  "themeColor": "#0e1230",
+  "backgroundColor": "#0e1230"
+}
