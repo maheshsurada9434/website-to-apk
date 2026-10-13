@@ -8,7 +8,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 APP="$1"; DIR="apps/$APP"
 [ -f "$DIR/app.json" ] || { echo "No $DIR/app.json"; exit 1; }
-j() { node -p "const c=require('./$DIR/app.json'); c['$1'] ?? '$2'"; }
+j() { node -p "const c=require('./$DIR/app.json'); c['$1'] ?? '${2:-}'"; }
 NAME=$(j name); ID=$(j id); URL=$(j url); VERSION=$(j version 1.0.0); MODE=$(j mode auto)
 PULL=$(j pullToRefresh true); ORIENT=$(j orientation any); BG=$(j backgroundColor '#ffffff')
 VERSION_CODE=${VERSION_CODE:-1}
