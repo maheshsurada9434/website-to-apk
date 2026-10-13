@@ -61,8 +61,7 @@ if full_bleed(icon):
     sq = icon.resize((S, S), Image.LANCZOS)
     sq.save('assets/icon-only.png')
     # adaptive icon: the same art, scaled into the safe zone, over its own edge colour
-    fg = Image.new('RGBA', (S, S), (0, 0, 0, 0)); inner = fit(icon, int(S * .78), int(S * .78))
-    fg.paste(inner, ((S - inner.width) // 2, (S - inner.height) // 2), inner)
+    fg = sq.copy()       # full artwork; launchers crop the outer edge, so keep key art in the middle 66%
     icon_bg = sq.getpixel((4, S // 2))[:3]
 else:
     art = fit(icon, int(S * .64), int(S * .64)); sq = Image.new('RGBA', (S, S), bg + (255,))
@@ -74,8 +73,8 @@ Image.new('RGBA', (S, S), icon_bg + (255,)).save('assets/icon-background.png')
 
 # Splash: rounded icon with a soft glow, centred on the app background
 W = 2732; sp = Image.new('RGBA', (W, W), bg + (255,))
-ic = sq.resize((560, 560), Image.LANCZOS)
-mask = Image.new('L', ic.size, 0); ImageDraw.Draw(mask).rounded_rectangle([0, 0, ic.width - 1, ic.height - 1], radius=130, fill=255)
+ic = sq.resize((720, 720), Image.LANCZOS)
+mask = Image.new('L', ic.size, 0); ImageDraw.Draw(mask).rounded_rectangle([0, 0, ic.width - 1, ic.height - 1], radius=165, fill=255)
 glow = Image.new('RGBA', (W, W), (0, 0, 0, 0)); ImageDraw.Draw(glow).ellipse([W // 2 - 520, W // 2 - 520, W // 2 + 520, W // 2 + 520], fill=hexrgb(accent(icon)) + (90,))
 sp = Image.alpha_composite(sp, glow.filter(ImageFilter.GaussianBlur(160)))
 sp.paste(ic, ((W - ic.width) // 2, (W - ic.height) // 2), mask)
